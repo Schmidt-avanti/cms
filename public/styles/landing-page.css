@@ -1,0 +1,362 @@
+/* Landing Page Styles */
+
+/* Navigation Header */
+.navbar {
+  background-color: rgb(23, 43, 82) !important;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand img {
+  max-height: 30px;
+  width: auto;
+  margin-right: 15px;
+}
+
+/* Hero Section */
+.hero-section {
+  padding: 120px 0 80px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.hero-content h1 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  color: #082041;
+  margin-bottom: 1rem;
+}
+
+.hero-content h2 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: #43bede;
+  margin-bottom: 1.5rem;
+}
+
+.hero-image {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Logo Marquee */
+.logo-marquee {
+  background: #082041;
+  padding: 40px 0;
+  overflow: hidden;
+}
+
+.marquee-track {
+  display: flex;
+  animation: marquee 30s linear infinite;
+  gap: 60px;
+  align-items: center;
+}
+
+.marquee-track img {
+  height: 40px;
+  width: auto;
+  opacity: 0.8;
+  filter: brightness(1.2) contrast(1.1);
+  transition: all 0.3s ease;
+}
+
+.marquee-track img:hover {
+  opacity: 1;
+  filter: brightness(1.4) contrast(1.2);
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Testimonials */
+.testimonials-alt {
+  background: #f8f9fa;
+  padding: 80px 0;
+}
+
+.testimonial-card-aspect {
+  aspect-ratio: 1;
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.testimonial-card-aspect img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(8, 32, 65, 0.9), rgba(67, 190, 222, 0.8));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.testimonial-card-aspect:hover .overlay {
+  opacity: 1;
+}
+
+.overlay-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem;
+  color: white;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.testimonial-card-aspect:hover .overlay-content {
+  transform: translateY(0);
+}
+
+/* Section Styling */
+.section-padding {
+  padding: 80px 0;
+}
+
+.section-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  color: #082041;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: #43bede;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+}
+
+/* Services Grid */
+.showCardContainer {
+  border: 1px solid #e9ecef;
+  border-radius: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+}
+
+.showCardContainer:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+.cardIcon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #43bede, #082041);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-icon {
+  width: 30px;
+  height: 30px;
+  color: white;
+}
+
+/* Background Colors */
+.bg-main {
+  background-color: #082041;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+/* Buttons */
+.btn-primary-custom {
+  background-color: #e67e22;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 30px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary-custom:hover {
+  background-color: #d35400;
+  transform: translateY(-2px);
+}
+
+/* Industries Section */
+.industries-section {
+  background: linear-gradient(135deg, #082041 0%, #0a2a5c 100%);
+  padding: 80px 0;
+}
+
+.industries-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 2.2rem;
+  margin-bottom: 3rem;
+}
+
+.industries-title--only {
+  color: white;
+}
+
+.ind-icon {
+  color: #43bede;
+  font-size: 2rem;
+}
+
+.ind-label {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* Contact Section */
+.consult-card {
+  background: linear-gradient(135deg, #43bede 0%, #082041 100%);
+  border-radius: 15px;
+}
+
+.contact-form-modern .form-control,
+.contact-form-modern .form-select {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: white;
+  border-radius: 10px;
+  padding: 12px 15px;
+}
+
+.contact-form-modern .form-control::placeholder {
+  color: rgba(255,255,255,0.7);
+}
+
+.btn-cta {
+  background-color: #e67e22;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 30px;
+  font-weight: 600;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.btn-cta:hover {
+  background-color: #d35400;
+  transform: translateY(-2px);
+}
+
+/* Footer */
+.site-footer {
+  background-color: #082041;
+  color: white;
+  padding: 60px 0 20px;
+}
+
+.footer-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.orangeU {
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: #e67e22;
+  margin: 10px 0 20px 0;
+}
+
+/* Video Container */
+.videoContainer {
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+.playBtn {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.playBtn:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1.4rem;
+  }
+  
+  .hero-section {
+    padding: 100px 0 60px;
+  }
+  
+  .marquee-track {
+    gap: 40px;
+  }
+  
+  .marquee-track img {
+    height: 30px;
+  }
+}
+
+/* Custom Container */
+.custom-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Animation Classes */
+.animate {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+
+.animate.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.animate.slide-in-right {
+  transform: translateX(50px);
+}
+
+.animate.slide-in-right.fade-in {
+  transform: translateX(0);
+}
+
+.animate.zoom-in {
+  transform: scale(0.8);
+}
+
+.animate.zoom-in.fade-in {
+  transform: scale(1);
+}
+
+/* Delay classes for staggered animations */
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }

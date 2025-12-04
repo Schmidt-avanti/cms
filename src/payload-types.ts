@@ -69,6 +69,7 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
+    pages: Page;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -78,6 +79,7 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    pages: PagesSelect<false> | PagesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -160,6 +162,383 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages".
+ */
+export interface Page {
+  id: string;
+  title: string;
+  slug: string;
+  layout?:
+    | (
+        | {
+            logo: string | Media;
+            /**
+             * Award badge image (optional)
+             */
+            awardBadge?: (string | null) | Media;
+            /**
+             * Tooltip text for the logo/award
+             */
+            tooltip?: string | null;
+            menuItems: {
+              label: string;
+              url: string;
+              id?: string | null;
+            }[];
+            phoneNumber?: string | null;
+            phoneUrl?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'navigation';
+          }
+        | {
+            title: string;
+            subtitle: string;
+            description: string;
+            ctaText?: string | null;
+            ctaUrl?: string | null;
+            heroImage?: (string | null) | Media;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'avantiHero';
+          }
+        | {
+            title: string;
+            subtitle?: string | null;
+            packages: {
+              name: string;
+              price: string;
+              pricePrefix?: string | null;
+              priceSuffix?: string | null;
+              weekdayHours: string;
+              weekdayTime: string;
+              weekendHours?: string | null;
+              weekendTime?: string | null;
+              holidayInfo: string;
+              tooltip?: string | null;
+              hasTooltip?: boolean | null;
+              id?: string | null;
+            }[];
+            onboardingPrice?: string | null;
+            ctaText?: string | null;
+            ctaUrl?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'pricingHero';
+          }
+        | {
+            packages: {
+              name: string;
+              price: string;
+              pricePrefix?: string | null;
+              priceSuffix?: string | null;
+              weekdayHours: string;
+              weekdayTime: string;
+              weekendHours?: string | null;
+              weekendTime?: string | null;
+              holidayInfo: string;
+              tooltip?: string | null;
+              hasTooltip?: boolean | null;
+              id?: string | null;
+            }[];
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'servicePackages';
+          }
+        | {
+            title: string;
+            features: {
+              text: string;
+              type: 'feature' | 'separator';
+              separatorText?: string | null;
+              id?: string | null;
+            }[];
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'packageIncludes';
+          }
+        | {
+            title: string;
+            subtitle?: string | null;
+            options: {
+              option: string;
+              oneTimePrice?: string | null;
+              monthlyPrice?: string | null;
+              id?: string | null;
+            }[];
+            footerNotes?:
+              | {
+                  note: string;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'additionalOptions';
+          }
+        | {
+            logos: {
+              logo: string | Media;
+              altText: string;
+              id?: string | null;
+            }[];
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'logoMarquee';
+          }
+        | {
+            title: string;
+            testimonials: {
+              name: string;
+              company: string;
+              position?: string | null;
+              quote: string;
+              /**
+               * Portrait image of the person giving the testimonial
+               */
+              image: string | Media;
+              id?: string | null;
+            }[];
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'testimonials';
+          }
+        | {
+            title?: string | null;
+            testimonials: {
+              quote: string;
+              author: string;
+              company: string;
+              image: string | Media;
+              /**
+               * CSS class for image positioning (e.g., "face-down")
+               */
+              imageClass?: string | null;
+              id?: string | null;
+            }[];
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'testimonialsGrid';
+          }
+        | {
+            title: string;
+            subtitle?: string | null;
+            description: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            };
+            ctaText?: string | null;
+            ctaUrl?: string | null;
+            teamMember: {
+              name: string;
+              position: string;
+              quote: string;
+              image: string | Media;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'aboutSection';
+          }
+        | {
+            title?: string | null;
+            services: {
+              title: string;
+              description: {
+                root: {
+                  type: string;
+                  children: {
+                    type: any;
+                    version: number;
+                    [k: string]: unknown;
+                  }[];
+                  direction: ('ltr' | 'rtl') | null;
+                  format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                  indent: number;
+                  version: number;
+                };
+                [k: string]: unknown;
+              };
+              /**
+               * SVG icon code
+               */
+              icon?: string | null;
+              id?: string | null;
+            }[];
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'servicesGrid';
+          }
+        | {
+            title: string;
+            services: {
+              title: string;
+              /**
+               * SVG icon code
+               */
+              icon: string;
+              id?: string | null;
+            }[];
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'additionalServices';
+          }
+        | {
+            title: string;
+            subtitle?: string | null;
+            /**
+             * Video file (MP4 format recommended)
+             */
+            videoFile: string | Media;
+            /**
+             * Video poster/thumbnail image
+             */
+            videoPoster?: (string | null) | Media;
+            /**
+             * Custom play button icon (optional)
+             */
+            playButtonIcon?: (string | null) | Media;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'videoSection';
+          }
+        | {
+            eyebrow?: string | null;
+            title: string;
+            description: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            };
+            images: {
+              image: string | Media;
+              altText: string;
+              id?: string | null;
+            }[];
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'platformSection';
+          }
+        | {
+            eyebrow?: string | null;
+            title: string;
+            industries: {
+              name: string;
+              /**
+               * Material Symbols icon name (e.g., "home_work", "storefront")
+               */
+              materialIcon: string;
+              id?: string | null;
+            }[];
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'industries';
+          }
+        | {
+            eyebrow?: string | null;
+            title: string;
+            description: string;
+            phone?: string | null;
+            formTitle?: string | null;
+            teamMember: {
+              name: string;
+              position: string;
+              quote: string;
+              image: string | Media;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'contactSection';
+          }
+        | {
+            logo: string | Media;
+            socialMedia?:
+              | {
+                  platform: string;
+                  url: string;
+                  icon: string | Media;
+                  id?: string | null;
+                }[]
+              | null;
+            awards?:
+              | {
+                  image: string | Media;
+                  altText: string;
+                  id?: string | null;
+                }[]
+              | null;
+            contactInfo?: {
+              companyName?: string | null;
+              address?: string | null;
+              phone?: string | null;
+              email?: string | null;
+            };
+            legalLinks?:
+              | {
+                  label: string;
+                  url: string;
+                  id?: string | null;
+                }[]
+              | null;
+            copyrightText?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'footer';
+          }
+        | {
+            /**
+             * Optional title for this HTML block (for admin purposes)
+             */
+            title?: string | null;
+            /**
+             * Paste your existing HTML content here (do not include <html>, <head>, or <body> tags)
+             */
+            htmlContent: string;
+            /**
+             * Optional custom CSS for this block
+             */
+            customCss?: string | null;
+            /**
+             * Optional custom JavaScript for this block
+             */
+            customJs?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'htmlContent';
+          }
+        | {
+            text: string;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'simpleText';
+          }
+      )[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -189,6 +568,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: string | Media;
+      } | null)
+    | ({
+        relationTo: 'pages';
+        value: string | Page;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -271,6 +654,347 @@ export interface MediaSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages_select".
+ */
+export interface PagesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  layout?:
+    | T
+    | {
+        navigation?:
+          | T
+          | {
+              logo?: T;
+              awardBadge?: T;
+              tooltip?: T;
+              menuItems?:
+                | T
+                | {
+                    label?: T;
+                    url?: T;
+                    id?: T;
+                  };
+              phoneNumber?: T;
+              phoneUrl?: T;
+              id?: T;
+              blockName?: T;
+            };
+        avantiHero?:
+          | T
+          | {
+              title?: T;
+              subtitle?: T;
+              description?: T;
+              ctaText?: T;
+              ctaUrl?: T;
+              heroImage?: T;
+              id?: T;
+              blockName?: T;
+            };
+        pricingHero?:
+          | T
+          | {
+              title?: T;
+              subtitle?: T;
+              packages?:
+                | T
+                | {
+                    name?: T;
+                    price?: T;
+                    pricePrefix?: T;
+                    priceSuffix?: T;
+                    weekdayHours?: T;
+                    weekdayTime?: T;
+                    weekendHours?: T;
+                    weekendTime?: T;
+                    holidayInfo?: T;
+                    tooltip?: T;
+                    hasTooltip?: T;
+                    id?: T;
+                  };
+              onboardingPrice?: T;
+              ctaText?: T;
+              ctaUrl?: T;
+              id?: T;
+              blockName?: T;
+            };
+        servicePackages?:
+          | T
+          | {
+              packages?:
+                | T
+                | {
+                    name?: T;
+                    price?: T;
+                    pricePrefix?: T;
+                    priceSuffix?: T;
+                    weekdayHours?: T;
+                    weekdayTime?: T;
+                    weekendHours?: T;
+                    weekendTime?: T;
+                    holidayInfo?: T;
+                    tooltip?: T;
+                    hasTooltip?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        packageIncludes?:
+          | T
+          | {
+              title?: T;
+              features?:
+                | T
+                | {
+                    text?: T;
+                    type?: T;
+                    separatorText?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        additionalOptions?:
+          | T
+          | {
+              title?: T;
+              subtitle?: T;
+              options?:
+                | T
+                | {
+                    option?: T;
+                    oneTimePrice?: T;
+                    monthlyPrice?: T;
+                    id?: T;
+                  };
+              footerNotes?:
+                | T
+                | {
+                    note?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        logoMarquee?:
+          | T
+          | {
+              logos?:
+                | T
+                | {
+                    logo?: T;
+                    altText?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        testimonials?:
+          | T
+          | {
+              title?: T;
+              testimonials?:
+                | T
+                | {
+                    name?: T;
+                    company?: T;
+                    position?: T;
+                    quote?: T;
+                    image?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        testimonialsGrid?:
+          | T
+          | {
+              title?: T;
+              testimonials?:
+                | T
+                | {
+                    quote?: T;
+                    author?: T;
+                    company?: T;
+                    image?: T;
+                    imageClass?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        aboutSection?:
+          | T
+          | {
+              title?: T;
+              subtitle?: T;
+              description?: T;
+              ctaText?: T;
+              ctaUrl?: T;
+              teamMember?:
+                | T
+                | {
+                    name?: T;
+                    position?: T;
+                    quote?: T;
+                    image?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        servicesGrid?:
+          | T
+          | {
+              title?: T;
+              services?:
+                | T
+                | {
+                    title?: T;
+                    description?: T;
+                    icon?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        additionalServices?:
+          | T
+          | {
+              title?: T;
+              services?:
+                | T
+                | {
+                    title?: T;
+                    icon?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        videoSection?:
+          | T
+          | {
+              title?: T;
+              subtitle?: T;
+              videoFile?: T;
+              videoPoster?: T;
+              playButtonIcon?: T;
+              id?: T;
+              blockName?: T;
+            };
+        platformSection?:
+          | T
+          | {
+              eyebrow?: T;
+              title?: T;
+              description?: T;
+              images?:
+                | T
+                | {
+                    image?: T;
+                    altText?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        industries?:
+          | T
+          | {
+              eyebrow?: T;
+              title?: T;
+              industries?:
+                | T
+                | {
+                    name?: T;
+                    materialIcon?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        contactSection?:
+          | T
+          | {
+              eyebrow?: T;
+              title?: T;
+              description?: T;
+              phone?: T;
+              formTitle?: T;
+              teamMember?:
+                | T
+                | {
+                    name?: T;
+                    position?: T;
+                    quote?: T;
+                    image?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        footer?:
+          | T
+          | {
+              logo?: T;
+              socialMedia?:
+                | T
+                | {
+                    platform?: T;
+                    url?: T;
+                    icon?: T;
+                    id?: T;
+                  };
+              awards?:
+                | T
+                | {
+                    image?: T;
+                    altText?: T;
+                    id?: T;
+                  };
+              contactInfo?:
+                | T
+                | {
+                    companyName?: T;
+                    address?: T;
+                    phone?: T;
+                    email?: T;
+                  };
+              legalLinks?:
+                | T
+                | {
+                    label?: T;
+                    url?: T;
+                    id?: T;
+                  };
+              copyrightText?: T;
+              id?: T;
+              blockName?: T;
+            };
+        htmlContent?:
+          | T
+          | {
+              title?: T;
+              htmlContent?: T;
+              customCss?: T;
+              customJs?: T;
+              id?: T;
+              blockName?: T;
+            };
+        simpleText?:
+          | T
+          | {
+              text?: T;
+              id?: T;
+              blockName?: T;
+            };
+      };
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

@@ -1,0 +1,211 @@
+{
+  "title": "Preise - avanti",
+  "slug": "preise",
+  "layout": [
+    {
+      "blockType": "navigation",
+      "logo": {
+        "url": "/Logo.svg",
+        "alt": "avanti"
+      },
+      "menuItems": [
+        {
+          "label": "Über uns",
+          "url": "index.html#aboutSection"
+        },
+        {
+          "label": "Leistungen", 
+          "url": "index.html#serviceSection"
+        },
+        {
+          "label": "Preise",
+          "url": "preise.html"
+        },
+        {
+          "label": "Kontakt",
+          "url": "index.html#contactSection"
+        }
+      ],
+      "phoneNumber": "+49 (0)30 / 814 892-121",
+      "phoneUrl": "tel:+49(0)30/814892-121"
+    },
+    {
+      "blockType": "pricingHero",
+      "title": "Service-Pakete",
+      "subtitle": "Die Service-Pakete unterscheiden sich durch unterschiedliche Öffnungszeiten",
+      "packages": [
+        {
+          "name": "Prepaid",
+          "price": "850€",
+          "pricePrefix": "Ab",
+          "priceSuffix": "/Monat",
+          "weekdayHours": "Montag bis Freitag",
+          "weekdayTime": "09:00 bis 17:30 Uhr",
+          "holidayInfo": "An bundeseinheitlichen Feiertagen geschlossen",
+          "hasTooltip": true,
+          "tooltip": "*Sie zahlen 2.550 € (entspricht 3 × 850 €) im Voraus für drei Monate per Kreditkarte. Wenn Sie mehr als 1.000 Minuten im Monat brauchen, wird automatisch ein zusätzliches Guthaben (in 100 €-Schritten) nachgeladen. Nachgeladenes aber unverbrauchtes Guthaben wird auf die Folgeperiode angerechnet."
+        },
+        {
+          "name": "Value",
+          "price": "950€",
+          "pricePrefix": "Ab",
+          "priceSuffix": "/Monat",
+          "weekdayHours": "Montag bis Freitag",
+          "weekdayTime": "09:00 bis 17:30 Uhr",
+          "holidayInfo": "An bundeseinheitlichen Feiertagen geschlossen",
+          "hasTooltip": false
+        },
+        {
+          "name": "Extended",
+          "price": "1.250€",
+          "pricePrefix": "Ab",
+          "priceSuffix": "/Monat",
+          "weekdayHours": "Montag bis Freitag",
+          "weekdayTime": "08:00 bis 20:00 Uhr",
+          "weekendHours": "Samstag",
+          "weekendTime": "10:00 bis 18:00 Uhr",
+          "holidayInfo": "An bundeseinheitlichen Feiertagen geschlossen",
+          "hasTooltip": false
+        },
+        {
+          "name": "Super 365",
+          "price": "1.950€",
+          "pricePrefix": "Ab",
+          "priceSuffix": "/Monat",
+          "weekdayHours": "Montag bis Sonntag",
+          "weekdayTime": "08:00 bis 20:00 Uhr",
+          "holidayInfo": "An Feiertagen geöffnet",
+          "hasTooltip": false
+        }
+      ],
+      "onboardingPrice": "Einmalige Onboarding-Gebühr 2.450€",
+      "ctaText": "Demo buchen →",
+      "ctaUrl": "javascript:void(0);"
+    },
+    {
+      "blockType": "packageIncludes",
+      "title": "Alle Pakete enthalten:",
+      "features": [
+        {
+          "text": "Vollen Zugang zur avanti-Plattform mit allen Funktionalitäten",
+          "type": "feature"
+        },
+        {
+          "type": "separator",
+          "separatorText": "und"
+        },
+        {
+          "text": "1.000 Minuten für Inbound-Anrufe und Rückrufe, Schrift- und Backoffice-Bearbeitung auf Deutsch und Englisch. Zusätzliche Minuten werden mit 0,75€ abgerechnet.",
+          "type": "feature"
+        },
+        {
+          "type": "separator",
+          "separatorText": "oder"
+        },
+        {
+          "text": "20 Stunden für Outbound-Kampagnen auf Deutsch und Englisch. Zusätzliche Stunden werden mit 25€ abgerechnet.",
+          "type": "feature"
+        }
+      ]
+    },
+    {
+      "blockType": "additionalOptions",
+      "title": "Zusatz - Optionen",
+      "subtitle": "Diese Zusatzoptionen können mit den Service-Paketen kombiniert werden",
+      "options": [
+        {
+          "option": "24/7-Service*",
+          "oneTimePrice": "/",
+          "monthlyPrice": "2.850€"
+        },
+        {
+          "option": "WhatsApp, Chat, Forms",
+          "oneTimePrice": "250€",
+          "monthlyPrice": "/"
+        },
+        {
+          "option": "Chat-/Voice-BOT",
+          "oneTimePrice": "1.850€",
+          "monthlyPrice": "250€"
+        },
+        {
+          "option": "Postadresse in Berlin Mitte",
+          "oneTimePrice": "250€",
+          "monthlyPrice": "250€"
+        },
+        {
+          "option": "CH-Paket** (CH-DE, FR, IT)",
+          "oneTimePrice": "/",
+          "monthlyPrice": "500€"
+        },
+        {
+          "option": "Einbindung von Fremd-Tools",
+          "oneTimePrice": "Nach Aufwand",
+          "monthlyPrice": "150€"
+        }
+      ],
+      "footerNotes": [
+        {
+          "note": "Alle Preise zzgl. gesetzlicher Mehrwertsteuer"
+        },
+        {
+          "note": "*in Verbindung mit \"Super 365\""
+        },
+        {
+          "note": "**Schweizerdeutsch, Deutsch, Französisch, Italienisch"
+        }
+      ]
+    },
+    {
+      "blockType": "footer",
+      "logo": {
+        "url": "/Group-172.svg",
+        "alt": "avanti"
+      },
+      "socialMedia": [
+        {
+          "platform": "Facebook",
+          "url": "https://www.facebook.com/share/1EaS9DqqDt/?mibextid=wwXIfr",
+          "icon": "/Path-117.svg"
+        },
+        {
+          "platform": "Instagram", 
+          "url": "https://www.instagram.com/avanti.cx?igsh=OTR2aWo5ZGVvMm1i",
+          "icon": "/Group-23.svg"
+        },
+        {
+          "platform": "LinkedIn",
+          "url": "https://de.linkedin.com/company/avanti-cx",
+          "icon": "/Group-22.svg"
+        }
+      ],
+      "awards": [
+        {
+          "name": "Business Innovator Siegel",
+          "image": "/public/DIIND_BusinessInnovator_Siegel_avanti.cx GmbH.png"
+        },
+        {
+          "name": "Business Innovator Seal",
+          "image": "/Group-275.png"
+        }
+      ],
+      "contactInfo": {
+        "company": "avanti.cx GmbH",
+        "address": "Singerstraße 109\n10179 Berlin",
+        "phone": "+49 (0)30 / 814 892-121",
+        "email": "info@avanti.cx"
+      },
+      "legalLinks": [
+        {
+          "label": "Impressum",
+          "url": "impressum.html"
+        },
+        {
+          "label": "Datenschutz",
+          "url": "datenschutz.html"
+        }
+      ],
+      "copyrightText": "© 2025 avanti – Ihr Service-Partner für zufriedene Kunden. All Rights Reserved."
+    }
+  ]
+}
