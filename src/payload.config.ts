@@ -13,6 +13,9 @@ import { Pages } from './collections/Pages'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
+// Check if we're in build mode (no database connection needed)
+const isBuildMode = process.env.PAYLOAD_DISABLE_DB === 'true' || (process.env.NODE_ENV === 'production' && process.env.VERCEL === '1')
+
 export default buildConfig({
   admin: {
     user: Users.slug,
@@ -31,7 +34,15 @@ export default buildConfig({
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
   db: mongooseAdapter({
-    url: process.env.DATABASE_URI || 'mongodb://127.0.0.1:27017/avanti-cms-dev',
+    url: isBuildMode 
+      ? 'mongodb://localhost:27017/build-placeholder' // Dummy URL for build mode
+      : (process.env.DATABASE_URI || 'mongodb://127.0.0.1:27017/avanti-cms-dev'),
+    connectOptions: isBuildMode 
+      ? {
+          serverSelectionTimeoutMS: 1000, // Quick timeout for build mode
+          socketTimeoutMS: 1000,
+        }
+      : undefined,
   }),
   sharp,
   plugins: [],
