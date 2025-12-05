@@ -19,7 +19,7 @@ interface PlatformSectionBlockProps {
     root: {
       type: string;
       children: {
-        type: any;
+        type: string;
         children?: {
           text: string;
           [k: string]: unknown;
@@ -32,8 +32,23 @@ interface PlatformSectionBlockProps {
   images: PlatformImage[];
 }
 
+interface RichTextContent {
+  root?: {
+    type: string;
+    children: {
+      type: string;
+      children?: {
+        text: string;
+        [k: string]: unknown;
+      }[];
+      [k: string]: unknown;
+    }[];
+    [k: string]: unknown;
+  };
+}
+
 // Helper function to render rich text content
-const renderRichText = (content: any) => {
+const renderRichText = (content: RichTextContent | string) => {
   if (typeof content === 'string') {
     return <p>{content}</p>;
   }
@@ -41,9 +56,9 @@ const renderRichText = (content: any) => {
   if (content?.root?.children) {
     return (
       <div>
-        {content.root.children.map((child: any, index: number) => (
+        {content.root.children.map((child, index: number) => (
           <p key={index} className="mb-3">
-            {child.children?.map((textNode: any, textIndex: number) => (
+            {child.children?.map((textNode, textIndex: number) => (
               <span key={textIndex}>{textNode.text || ''}</span>
             ))}
           </p>

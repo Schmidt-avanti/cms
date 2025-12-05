@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 interface Logo {
   logo: {
@@ -19,20 +20,26 @@ export const LogoMarqueeBlock: React.FC<LogoMarqueeProps> = ({ logos }) => {
         <div className="marquee-track">
           {logos?.map((logoItem, index) => (
             logoItem.logo ? (
-              <img 
+              <Image 
                 key={index}
                 src={logoItem.logo.url} 
                 alt={logoItem.altText}
+                width={120}
+                height={60}
+                className="logo-image"
               />
             ) : null
           ))}
           {/* Duplicate for seamless loop */}
           {logos?.map((logoItem, index) => (
             logoItem.logo ? (
-              <img 
+              <Image 
                 key={`duplicate-${index}`}
                 src={logoItem.logo.url} 
                 alt={logoItem.altText}
+                width={120}
+                height={60}
+                className="logo-image"
               />
             ) : null
           ))}

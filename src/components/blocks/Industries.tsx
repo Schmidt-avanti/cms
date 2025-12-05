@@ -27,9 +27,9 @@ export const IndustriesBlock: React.FC<IndustriesBlockProps> = ({
             <div className="industries-header">
               {eyebrow && <div className="eyebrow text-white fw-semibold">{eyebrow}</div>}
               <h2 className="industries-title industries-title--only text-white">
-                {title.split(' ').map((word, index) => {
+                {title.split(' ').map((word, _index) => {
                   if (word === 'Unternehmen') {
-                    return <span key={index} className="line-break">{word}</span>;
+                    return <span key={_index} className="line-break">{word}</span>;
                   }
                   return word + ' ';
                 })}

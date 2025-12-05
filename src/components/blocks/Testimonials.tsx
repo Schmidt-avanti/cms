@@ -60,7 +60,7 @@ export const TestimonialsBlock: React.FC<TestimonialsBlockProps> = ({
                         textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)'
                       }}
                     >
-                      <p className="testimonial-quote" style={{ fontSize: '20px', marginBottom: '15px', fontStyle: 'italic', lineHeight: '1.4', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)' }}>"{testimonial.quote}"</p>
+                      <p className="testimonial-quote" style={{ fontSize: '20px', marginBottom: '15px', fontStyle: 'italic', lineHeight: '1.4', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)' }}>&ldquo;{testimonial.quote}&rdquo;</p>
                       <p className="testimonial-author" style={{ fontSize: '18px', fontWeight: 'bold', marginBottom: '8px', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)' }}>{testimonial.name},</p>
                       <p className="testimonial-company" style={{ fontSize: '16px', marginBottom: '0', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)' }}>{testimonial.company}</p>
                     </div>

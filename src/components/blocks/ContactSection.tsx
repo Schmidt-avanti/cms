@@ -114,7 +114,7 @@ export const ContactSectionBlock: React.FC<ContactSectionProps> = ({
                     <div className="ps-4">
                       <blockquote className="mb-4">
                         <p className="fs-5 mb-4" style={{lineHeight: '1.6', color: '#333'}}>
-                          "{teamMember.quote}"
+                          &ldquo;{teamMember.quote}&rdquo;
                         </p>
                       </blockquote>
                       <div className="team-member-info">

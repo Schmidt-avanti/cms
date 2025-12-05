@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 interface Testimonial {
   quote: string;
@@ -36,10 +37,12 @@ export const TestimonialsGridBlock: React.FC<TestimonialsGridProps> = ({
                 <div key={index} className="col-12 col-lg-6 col-xl-4">
                   <div className="card testimonial-card-aspect shadow">
                     {testimonial.image?.url && (
-                      <img 
+                      <Image 
                         src={testimonial.image.url} 
                         alt={testimonial.image.alt || testimonial.author} 
                         className="face-down"
+                        width={300}
+                        height={300}
                       />
                     )}
                     <div className="overlay"></div>

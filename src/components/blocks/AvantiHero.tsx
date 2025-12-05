@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 interface AvantiHeroProps {
   title: string;
@@ -48,11 +49,14 @@ export const AvantiHeroBlock: React.FC<AvantiHeroProps> = ({
           </div>
           <div className="col-lg-6">
             {heroImage?.url && (
-              <img 
+              <Image 
                 id="hero-image" 
                 src={heroImage.url} 
                 alt={heroImage.alt || "Hero image"} 
                 className="hero-image"
+                width={600}
+                height={400}
+                priority
               />
             )}
           </div>
