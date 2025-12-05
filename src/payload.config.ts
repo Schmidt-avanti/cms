@@ -26,12 +26,12 @@ export default buildConfig({
     Pages,
   ],
   editor: lexicalEditor(),
-  secret: process.env.PAYLOAD_SECRET || '',
+  secret: process.env.PAYLOAD_SECRET || 'fallback-secret-key-for-development-only',
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
   db: mongooseAdapter({
-    url: process.env.DATABASE_URI || '',
+    url: process.env.DATABASE_URI || 'mongodb://127.0.0.1:27017/avanti-cms-dev',
   }),
   sharp,
   plugins: [],
