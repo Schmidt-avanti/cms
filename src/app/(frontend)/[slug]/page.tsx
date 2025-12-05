@@ -6,13 +6,13 @@ import { BlockRenderer } from '@/components/BlockRenderer';
 import type { Metadata } from 'next';
 
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export default async function DynamicPage({ params }: PageProps) {
-  const { slug } = params;
+  const { slug } = await params;
   console.log('Attempting to load page with slug:', slug);
   
   const payloadConfig = await config;
@@ -68,7 +68,7 @@ export default async function DynamicPage({ params }: PageProps) {
 
 // Generate metadata for each page
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { slug } = params;
+  const { slug } = await params;
   const payloadConfig = await config;
   const payload = await getPayload({ config: payloadConfig });
 
