@@ -18,16 +18,6 @@ const isBuildMode =
   process.env.PAYLOAD_DISABLE_DB === 'true' ||
   (process.env.NODE_ENV === 'production' && process.env.VERCEL === '1')
 
-const db = isBuildMode
-  ? undefined
-  : postgresAdapter({
-      pool: {
-        connectionString:
-          process.env.DATABASE_URI || 'postgres://USER:PASSWORD@HOST:PORT/DATABASE?sslmode=require',
-        ssl: { rejectUnauthorized: false },
-      },
-    })
-
 export default buildConfig({
   admin: {
     user: Users.slug,
@@ -41,7 +31,16 @@ export default buildConfig({
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
-  db,
+  db: (isBuildMode
+    ? undefined
+    : postgresAdapter({
+        pool: {
+          connectionString:
+            process.env.DATABASE_URI ||
+            'postgres://USER:PASSWORD@HOST:PORT/DATABASE?sslmode=require',
+          ssl: { rejectUnauthorized: false },
+        },
+      })) as any,
   sharp,
   plugins: [],
 })
