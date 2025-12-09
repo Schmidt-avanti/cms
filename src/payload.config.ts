@@ -1,5 +1,5 @@
 // storage-adapter-import-placeholder
-import { mongooseAdapter } from '@payloadcms/db-mongodb'
+import { postgresAdapter } from '@payloadcms/db-postgres'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
 import { buildConfig } from 'payload'
@@ -14,7 +14,19 @@ const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 // Check if we're in build mode (no database connection needed)
-const isBuildMode = process.env.PAYLOAD_DISABLE_DB === 'true' || (process.env.NODE_ENV === 'production' && process.env.VERCEL === '1')
+const isBuildMode =
+  process.env.PAYLOAD_DISABLE_DB === 'true' ||
+  (process.env.NODE_ENV === 'production' && process.env.VERCEL === '1')
+
+const db = isBuildMode
+  ? undefined
+  : postgresAdapter({
+      pool: {
+        connectionString:
+          process.env.DATABASE_URI || 'postgres://USER:PASSWORD@HOST:PORT/DATABASE?sslmode=require',
+        ssl: { rejectUnauthorized: false },
+      },
+    })
 
 export default buildConfig({
   admin: {
@@ -23,27 +35,13 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [
-    Users,
-    Media,
-    Pages,
-  ],
+  collections: [Users, Media, Pages],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || 'fallback-secret-key-for-development-only',
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
-  db: mongooseAdapter({
-    url: isBuildMode 
-      ? 'mongodb://localhost:27017/build-placeholder' // Dummy URL for build mode
-      : (process.env.DATABASE_URI || 'mongodb://127.0.0.1:27017/avanti-cms-dev'),
-    connectOptions: isBuildMode 
-      ? {
-          serverSelectionTimeoutMS: 1000, // Quick timeout for build mode
-          socketTimeoutMS: 1000,
-        }
-      : undefined,
-  }),
+  db,
   sharp,
   plugins: [],
 })
