@@ -14,9 +14,9 @@ const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 // Check if we're in build mode (no database connection needed)
-const isBuildMode =
-  process.env.PAYLOAD_DISABLE_DB === 'true' ||
-  (process.env.NODE_ENV === 'production' && process.env.VERCEL === '1')
+// Only respect the explicit PAYLOAD_DISABLE_DB flag (set in build script),
+// so that runtime on Vercel still initializes the database.
+const isBuildMode = process.env.PAYLOAD_DISABLE_DB === 'true'
 
 export default buildConfig({
   admin: {
