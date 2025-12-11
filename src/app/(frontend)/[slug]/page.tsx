@@ -69,10 +69,19 @@ export default async function DynamicPage({ params }: PageProps) {
 // Generate metadata for each page
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const payloadConfig = await config;
-  const payload = await getPayload({ config: payloadConfig });
+  
+  // Skip database operations during build mode
+  if (process.env.PAYLOAD_DISABLE_DB === 'true') {
+    return {
+      title: `Page: ${slug}`,
+      description: 'Avanti CMS Page',
+    };
+  }
 
   try {
+    const payloadConfig = await config;
+    const payload = await getPayload({ config: payloadConfig });
+
     const pages = await payload.find({
       collection: 'pages' as any,
       where: {
@@ -104,10 +113,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 // Generate static params for all pages (optional, for static generation)
 export async function generateStaticParams() {
-  const payloadConfig = await config;
-  const payload = await getPayload({ config: payloadConfig });
+  // Skip database operations during build mode
+  if (process.env.PAYLOAD_DISABLE_DB === 'true') {
+    console.log('Database disabled during build, returning empty static params');
+    return [];
+  }
 
   try {
+    const payloadConfig = await config;
+    const payload = await getPayload({ config: payloadConfig });
+
     const pages = await payload.find({
       collection: 'pages' as any,
       limit: 100, // Adjust as needed
