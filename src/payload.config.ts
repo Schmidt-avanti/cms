@@ -35,8 +35,11 @@ export default buildConfig({
   },
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.DATABASE_URL || process.env.POSTGRES_URL,
+      connectionString: isBuildMode 
+        ? 'postgresql://localhost:5432/build-placeholder'
+        : (process.env.DATABASE_URL || process.env.POSTGRES_URL || 'postgresql://localhost:5432/avanti-cms-dev'),
     },
+    migrationDir: './src/migrations',
   }),
   sharp,
 

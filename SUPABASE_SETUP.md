@@ -14,19 +14,27 @@ Your Payload CMS has been successfully configured to use Supabase (PostgreSQL) i
    - Updated `payload.config.ts` to use `postgresAdapter`
    - Updated environment variable references
 
-## Required Environment Variables in Vercel
+## 🚨 CRITICAL: Required Environment Variables in Vercel
 
-Since you mentioned you already have environment variables in Vercel, make sure you have one of these:
+**Your build is failing because the DATABASE_URL is not set in Vercel!**
+
+You MUST add this environment variable in your Vercel dashboard:
 
 ```
 DATABASE_URL=postgresql://postgres:[PASSWORD]@db.[PROJECT-REF].supabase.co:5432/postgres
 ```
 
-OR
+### How to Add Environment Variables in Vercel:
 
-```
-POSTGRES_URL=postgresql://postgres:[PASSWORD]@db.[PROJECT-REF].supabase.co:5432/postgres
-```
+1. Go to your Vercel project dashboard
+2. Click on **Settings** tab
+3. Click on **Environment Variables** in the sidebar
+4. Add a new variable:
+   - **Name**: `DATABASE_URL`
+   - **Value**: Your Supabase connection string
+   - **Environment**: Production, Preview, Development (select all)
+5. Click **Save**
+6. **Redeploy** your project
 
 ## Getting Your Supabase Connection String
 
