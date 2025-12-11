@@ -1,10 +1,13 @@
 import type { CollectionConfig } from 'payload'
 
 export const Media: CollectionConfig = {
-  slug: 'media',            // 👈 must be "media" to match your config
+  slug: 'media', // 👈 must be "media"
+  access: {
+    read: () => true, // optional but handy so frontend can see images
+  },
   upload: {
-    // don't use staticDir or local file paths on Vercel
-    mimeTypes: ['image/*'], // optional: allow images only
+    // IMPORTANT: no staticDir/staticURL here on Vercel
+    mimeTypes: ['image/*'], // or ['image/*', 'video/*'] etc.
   },
   fields: [
     {
