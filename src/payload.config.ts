@@ -1,4 +1,4 @@
-import { mongooseAdapter } from '@payloadcms/db-mongodb'
+import { postgresAdapter } from '@payloadcms/db-postgres'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
 import { buildConfig } from 'payload'
@@ -33,16 +33,10 @@ export default buildConfig({
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
-  db: mongooseAdapter({
-    url: isBuildMode
-      ? 'mongodb://localhost:27017/build-placeholder'
-      : (process.env.DATABASE_URI || 'mongodb://127.0.0.1:27017/avanti-cms-dev'),
-    connectOptions: isBuildMode
-      ? {
-          serverSelectionTimeoutMS: 1000,
-          socketTimeoutMS: 1000,
-        }
-      : undefined,
+  db: postgresAdapter({
+    pool: {
+      connectionString: process.env.DATABASE_URL || process.env.POSTGRES_URL,
+    },
   }),
   sharp,
 
