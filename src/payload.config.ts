@@ -18,7 +18,8 @@ const dirname = path.dirname(filename)
 
 const isBuildMode =
   process.env.PAYLOAD_DISABLE_DB === 'true' ||
-  (process.env.NODE_ENV === 'production' && process.env.VERCEL === '1')
+  process.env.NEXT_PHASE === 'phase-production-build' ||
+  (process.env.NODE_ENV === 'production' && process.env.VERCEL === '1' && !process.env.DATABASE_URL && !process.env.POSTGRES_URL)
 
 export default buildConfig({
   admin: {
@@ -36,7 +37,7 @@ export default buildConfig({
   db: postgresAdapter({
     pool: {
       connectionString: isBuildMode 
-        ? 'postgresql://localhost:5432/build-placeholder'
+        ? 'postgresql://localhost/build-placeholder'
         : (process.env.DATABASE_URL || process.env.POSTGRES_URL || 'postgresql://localhost:5432/avanti-cms-dev'),
     },
     migrationDir: './src/migrations',
